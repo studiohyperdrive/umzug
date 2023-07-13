@@ -45,7 +45,7 @@ export default class MongoDBStorage extends Storage {
    * @returns {Promise}
    */
   unlogMigration (migrationName) {
-    return this.collection.removeOne({ migrationName });
+    return this.collection.deleteOne({ migrationName });
   }
 
   /**

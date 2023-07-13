@@ -13,7 +13,7 @@ describe('MongoDB', () => {
     helper.clearTmp();
     collectionApi = {
       insertOne: sinon.stub().resolves(),
-      removeOne: sinon.stub().resolves(),
+      deleteOne: sinon.stub().resolves(),
       find: sinon.stub().returns({
         sort: sinon.stub().returns({
           toArray: sinon.stub().resolves([]),
@@ -70,7 +70,7 @@ describe('MongoDB', () => {
 
     it('removes the passed value from the storage', function () {
       return this.storage.unlogMigration('asd.js').then(() => {
-        expect(collectionApi.removeOne).to.have.been.calledWith({ migrationName: 'asd.js' });
+        expect(collectionApi.deleteOne).to.have.been.calledWith({ migrationName: 'asd.js' });
       });
     });
   });
